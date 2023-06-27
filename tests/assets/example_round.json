@@ -1,0 +1,413 @@
+{
+    "1": {
+        "id": "1",
+        "tees": "blue",
+        "date": "2023-06-16T00:00:00",
+        "course": "The Ole Miss Golf Course",
+        "slope": 125,
+        "rating": 73.3,
+        "user": "ryan",
+        "holes": [
+            {
+                "number": 1,
+                "par": 4,
+                "yardage": 345,
+                "score": 3,
+                "handicap": 8
+            },
+            {
+                "number": 2,
+                "par": 4,
+                "yardage": 460,
+                "score": 4,
+                "handicap": 12
+            },
+            {
+                "number": 3,
+                "par": 3,
+                "yardage": 204,
+                "score": 4,
+                "handicap": 4
+            },
+            {
+                "number": 4,
+                "par": 4,
+                "yardage": 400,
+                "score": 6,
+                "handicap": 2
+            },
+            {
+                "number": 5,
+                "par": 3,
+                "yardage": 198,
+                "score": 4,
+                "handicap": 16
+            },
+            {
+                "number": 6,
+                "par": 5,
+                "yardage": 505,
+                "score": 4,
+                "handicap": 14
+            },
+            {
+                "number": 7,
+                "par": 5,
+                "yardage": 565,
+                "score": 5,
+                "handicap": 6
+            },
+            {
+                "number": 8,
+                "par": 4,
+                "yardage": 405,
+                "score": 5,
+                "handicap": 18
+            },
+            {
+                "number": 9,
+                "par": 4,
+                "yardage": 401,
+                "score": 4,
+                "handicap": 10
+            },
+            {
+                "number": 10,
+                "par": 4,
+                "yardage": 400,
+                "score": 4,
+                "handicap": 9
+            },
+            {
+                "number": 11,
+                "par": 4,
+                "yardage": 405,
+                "score": 4,
+                "handicap": 3
+            },
+            {
+                "number": 12,
+                "par": 3,
+                "yardage": 180,
+                "score": 3,
+                "handicap": 15
+            },
+            {
+                "number": 13,
+                "par": 4,
+                "yardage": 401,
+                "score": 4,
+                "handicap": 1
+            },
+            {
+                "number": 14,
+                "par": 5,
+                "yardage": 580,
+                "score": 6,
+                "handicap": 17
+            },
+            {
+                "number": 15,
+                "par": 5,
+                "yardage": 544,
+                "score": 5,
+                "handicap": 13
+            },
+            {
+                "number": 16,
+                "par": 3,
+                "yardage": 239,
+                "score": 4,
+                "handicap": 5
+            },
+            {
+                "number": 17,
+                "par": 4,
+                "yardage": 453,
+                "score": 4,
+                "handicap": 7
+            },
+            {
+                "number": 18,
+                "par": 4,
+                "yardage": 350,
+                "score": 4,
+                "handicap": 11
+            }
+        ]
+    },
+    "2": {
+        "id": "2",
+        "tees": "blue",
+        "date": "2023-06-16T00:00:00",
+        "course": "The Ole Miss Golf Course",
+        "slope": 125,
+        "rating": 73.3,
+        "user": "ryan",
+        "holes": [
+            {
+                "number": 1,
+                "par": 4,
+                "yardage": 345,
+                "score": 4,
+                "handicap": 8
+            },
+            {
+                "number": 2,
+                "par": 4,
+                "yardage": 460,
+                "score": 6,
+                "handicap": 12
+            },
+            {
+                "number": 3,
+                "par": 3,
+                "yardage": 204,
+                "score": 4,
+                "handicap": 4
+            },
+            {
+                "number": 4,
+                "par": 4,
+                "yardage": 400,
+                "score": 6,
+                "handicap": 2
+            },
+            {
+                "number": 5,
+                "par": 3,
+                "yardage": 198,
+                "score": 4,
+                "handicap": 16
+            },
+            {
+                "number": 6,
+                "par": 5,
+                "yardage": 505,
+                "score": 6,
+                "handicap": 14
+            },
+            {
+                "number": 7,
+                "par": 5,
+                "yardage": 565,
+                "score": 5,
+                "handicap": 6
+            },
+            {
+                "number": 8,
+                "par": 4,
+                "yardage": 405,
+                "score": 6,
+                "handicap": 18
+            },
+            {
+                "number": 9,
+                "par": 4,
+                "yardage": 401,
+                "score": 5,
+                "handicap": 10
+            },
+            {
+                "number": 10,
+                "par": 4,
+                "yardage": 400,
+                "score": 6,
+                "handicap": 9
+            },
+            {
+                "number": 11,
+                "par": 4,
+                "yardage": 405,
+                "score": 6,
+                "handicap": 3
+            },
+            {
+                "number": 12,
+                "par": 3,
+                "yardage": 180,
+                "score": 5,
+                "handicap": 15
+            },
+            {
+                "number": 13,
+                "par": 4,
+                "yardage": 401,
+                "score": 5,
+                "handicap": 1
+            },
+            {
+                "number": 14,
+                "par": 5,
+                "yardage": 580,
+                "score": 5,
+                "handicap": 17
+            },
+            {
+                "number": 15,
+                "par": 5,
+                "yardage": 544,
+                "score": 7,
+                "handicap": 13
+            },
+            {
+                "number": 16,
+                "par": 3,
+                "yardage": 239,
+                "score": 3,
+                "handicap": 5
+            },
+            {
+                "number": 17,
+                "par": 4,
+                "yardage": 453,
+                "score": 4,
+                "handicap": 7
+            },
+            {
+                "number": 18,
+                "par": 4,
+                "yardage": 350,
+                "score": 5,
+                "handicap": 11
+            }
+        ]
+    },
+    "3": {
+        "id": "3",
+        "tees": "blue",
+        "date": "2023-06-16T00:00:00",
+        "course": "The Ole Miss Golf Course",
+        "slope": 125,
+        "rating": 73.3,
+        "user": "ryan",
+        "holes": [
+            {
+                "number": 1,
+                "par": 4,
+                "yardage": 345,
+                "score": 4,
+                "handicap": 8
+            },
+            {
+                "number": 2,
+                "par": 4,
+                "yardage": 460,
+                "score": 6,
+                "handicap": 12
+            },
+            {
+                "number": 3,
+                "par": 3,
+                "yardage": 204,
+                "score": 4,
+                "handicap": 4
+            },
+            {
+                "number": 4,
+                "par": 4,
+                "yardage": 400,
+                "score": 6,
+                "handicap": 2
+            },
+            {
+                "number": 5,
+                "par": 3,
+                "yardage": 198,
+                "score": 4,
+                "handicap": 16
+            },
+            {
+                "number": 6,
+                "par": 5,
+                "yardage": 505,
+                "score": 6,
+                "handicap": 14
+            },
+            {
+                "number": 7,
+                "par": 5,
+                "yardage": 565,
+                "score": 5,
+                "handicap": 6
+            },
+            {
+                "number": 8,
+                "par": 4,
+                "yardage": 405,
+                "score": 6,
+                "handicap": 18
+            },
+            {
+                "number": 9,
+                "par": 4,
+                "yardage": 401,
+                "score": 5,
+                "handicap": 10
+            },
+            {
+                "number": 10,
+                "par": 4,
+                "yardage": 400,
+                "score": 6,
+                "handicap": 9
+            },
+            {
+                "number": 11,
+                "par": 4,
+                "yardage": 405,
+                "score": 6,
+                "handicap": 3
+            },
+            {
+                "number": 12,
+                "par": 3,
+                "yardage": 180,
+                "score": 5,
+                "handicap": 15
+            },
+            {
+                "number": 13,
+                "par": 4,
+                "yardage": 401,
+                "score": 5,
+                "handicap": 1
+            },
+            {
+                "number": 14,
+                "par": 5,
+                "yardage": 580,
+                "score": 5,
+                "handicap": 17
+            },
+            {
+                "number": 15,
+                "par": 5,
+                "yardage": 544,
+                "score": 7,
+                "handicap": 13
+            },
+            {
+                "number": 16,
+                "par": 3,
+                "yardage": 239,
+                "score": 3,
+                "handicap": 5
+            },
+            {
+                "number": 17,
+                "par": 4,
+                "yardage": 453,
+                "score": 4,
+                "handicap": 7
+            },
+            {
+                "number": 18,
+                "par": 4,
+                "yardage": 350,
+                "score": 5,
+                "handicap": 11
+            }
+        ]
+    }
+}
