@@ -30,6 +30,7 @@ setup(
         "torch",
         "torchvision",
         "transformers",
+        "SQLAlchemy",
     ],
     extras_require=extras_require,
     classifiers=[
