@@ -27,6 +27,11 @@ async def new_user():
     pass
 
 
+@app.get("/user/{user_id}/handicap-index")
+async def get_user_handicap(user_id: str):
+    pass
+
+
 @app.get("/user/{user_id}/course-handicap")
 async def get_course_handicap(user_id: str, request: CourseHandicapRequest):
     pass
