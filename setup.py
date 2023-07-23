@@ -16,7 +16,7 @@ extras_require["all"] = all_require
 
 
 setup(
-    name="smart-edge",
+    name="swingsage",
     version="1.0.0",
     author="Ryan Smith",
     author_email="ryanmsmith251@gmail.com",
