@@ -1,8 +1,41 @@
+[project]
+name = "sage"
+authors = [
+    {name = "Ryan Smith", email = "ryanmsmith251@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = ["License :: OSI Approved :: MIT License"]
+version = "0.0.0"
+
+dependencies = [
+    "fastapi", 
+    "uvicorn", 
+    "pydantic",
+    "torch",
+    "torchvision",
+    "transformers",
+    "SQLAlchemy",
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+    "ruff",
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "pre-commit",
+]
+
+[tool.setuptools]
+py-modules = ["sage"]
+
 [tool.black]
 line-length = 88
 
 [tool.mypy]
-files = "edge/"
+files = "sage/"
 check_untyped_defs = "true"
 ignore_missing_imports = "true"
 
