@@ -7,7 +7,7 @@ This app is currently in very early development and will likely take a while bef
 There will be a club selector and a next shot button that submits the data to the API. This location will be compared to each location to get distances and allow the user to keep track of their shot distances. This will be very rudimentary at first. This will also be accompanied by rudimentary buttons and things to get stats, handicap, etc. I plan on putting most of the stats in v1 of the app. The plan in this version is for this to be a simple website and might only be hosted locally with strict access control.
 
 ### Version 2
-Version 2 will hopefully ramp up the complexity a bit by using the Google Maps API to get more detailed data on shots. I'm hoping that this version will also include some sort of computer vision to detect whether or not the user is on the fairway, green, tee box, or in the rough.
+Version 2 will hopefully ramp up the complexity a bit by using the Google Maps API to get more detailed data on shots. I'm hoping that this version will also include some sort of computer vision to detect whether or not the user is on the fairway, green, tee box, or in the rough. I think I also have a strategy for this app to automatically pull which tee the user plays from on each hole so that users can play mixed tee rounds and have accurate stats. This version will also hopefully automatically query the USGA for a course's slope and rating.
 
 ### Unknown timeline
 - [ ] Add scorecard detector that will pull all relevant data from a scorecard using object detection and OCR
