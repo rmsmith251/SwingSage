@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Golf Shot Tracker</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Golf Shot Tracker</h1>
+
+    <button onclick="getNextShotLocation()">Next Shot</button>
+
+    <!-- Club selection dropdown -->
+    <select id="clubSelect">
+        <option value="3 Iron" disabled selected>Select your club</option>
+        <!-- Clubs will be populated here -->
+    </select>
+
+    <!-- Elements to display latitude and longitude -->
+    <div id="coordinates">
+        <p>Latitude: <span id="latitude"></span></p>
+        <p>Longitude: <span id="longitude"></span></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+
+</html>
