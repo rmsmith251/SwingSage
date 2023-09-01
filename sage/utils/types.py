@@ -2,11 +2,10 @@ from __future__ import annotations
 
 from datetime import datetime
 from enum import Enum
-from typing import Dict, Optional, Sequence, Tuple
 from uuid import uuid4
 
 from pydantic import BaseModel as PydanticBaseModel
-from pydantic import Field, PositiveInt
+from pydantic import ConfigDict, Field, PositiveInt
 
 
 class RoundTypes(str, Enum):
@@ -15,21 +14,21 @@ class RoundTypes(str, Enum):
 
 
 class BaseModel(PydanticBaseModel):
-    class Config:
-        underscore_attrs_are_private = True
-        use_enum_values = True
+    # TODO[pydantic]: The following keys were removed: `underscore_attrs_are_private`.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
+    model_config = ConfigDict(underscore_attrs_are_private=True, use_enum_values=True)
 
 
 class Hole(BaseModel):
-    number: Optional[PositiveInt] = None
-    par: Optional[PositiveInt] = None
-    yardage: Optional[PositiveInt] = None
-    score: Optional[PositiveInt] = None
-    putts: Optional[PositiveInt] = None
-    handicap: Optional[PositiveInt] = None
+    number: PositiveInt | None = None
+    par: PositiveInt | None = None
+    yardage: PositiveInt | None = None
+    score: PositiveInt | None = None
+    putts: PositiveInt | None = None
+    handicap: PositiveInt | None = None
 
-    _adjusted_score: Optional[PositiveInt] = None
-    _net_par: Optional[PositiveInt] = None
+    _adjusted_score: PositiveInt | None = None
+    _net_par: PositiveInt | None = None
 
     def reset(self) -> None:
         self._adjusted_score = None
@@ -66,16 +65,33 @@ class Hole(BaseModel):
         return self._adjusted_score
 
 
-class Round(BaseModel):
+class ScoreResponse(PydanticBaseModel):
+    strokes: int = 0
+    current_par: int = 0
+    score: int = 0
+    holes_completed: int = 0
+
+    def update(self, hole: Hole):
+        if hole.score is not None:
+            self.strokes += hole.score
+            self.current_par += hole.par
+            self.score += hole.strokes - hole.par
+            self.holes_completed += 1
+
+
+class KeyRoundData(BaseModel):
     id: str = Field(default_factory=uuid4)
-    tees: str
     date: datetime
     course: str
+
+
+class Round(KeyRoundData):
+    tees: str
     slope: PositiveInt
     rating: float
-    holes: Sequence[Hole] = []
-    user: Optional[str] = None
-    score: Optional[PositiveInt] = None
+    holes: dict[int, Hole] = {}
+    user: str | None = None
+    score: PositiveInt | None = None
     pcc: int = 0
     exceptional_round: bool = False
     exceptional_adjustment_strokes: PositiveInt = 0
@@ -83,8 +99,8 @@ class Round(BaseModel):
     round_type: RoundTypes = RoundTypes.stroke_play
 
     _valid_round: bool = False
-    _adjusted_gross_score: Optional[int] = None
-    _score_differential: Optional[float] = None
+    _adjusted_gross_score: int | None = None
+    _score_differential: float | None = None
 
     def reset(self) -> None:
         self._valid_round = False
@@ -119,13 +135,13 @@ class Round(BaseModel):
         The adjusted score used to level out poor performance on individual holes.
         """
         self._adjusted_gross_score = 0
-        for hole in self.holes:
+        for hole in self.holes.values():
             self._adjusted_gross_score += hole.adjusted_score(handicap_index)
         self._adjusted_gross_score -= self.exceptional_adjustment_strokes
 
         return self._adjusted_gross_score
 
-    def score_differential(self, handicap_index: int = 0) -> Tuple[float, bool]:
+    def score_differential(self, handicap_index: int = 0) -> tuple[float, bool]:
         """
         Adapted from USGA score differential page
         https://www.usga.org/content/usga/home-page/handicapping/world-handicap-system/world-handicap-system-usga-golf-faqs/faqs---what-is-a-score-differential.html
@@ -139,8 +155,29 @@ class Round(BaseModel):
             self.exceptional_round = False
         return self._score_differential, self.exceptional_round
 
+    async def current_score(self) -> int:
+        score = ScoreResponse()
+        for hole in self.holes.values():
+            score.update(hole)
 
-Rounds = Dict[str, Round]
+        return score
+
+    async def update(self, hole_data: Hole) -> int:
+        """
+        Update a hole's score and return the current score
+        """
+        self.holes[hole_data.number] = hole_data
+        return self.current_score()
+
+    @classmethod
+    def from_request(request: StartRoundRequest) -> Round:
+        return Round(**request.dict())
+
+    def to_key_data(self) -> KeyRoundData:
+        return KeyRoundData(id=self.id, date=self.date, course=self.courses)
+
+
+Rounds = dict[str, Round]
 
 
 class CourseHandicapRequest(BaseModel):
@@ -151,3 +188,15 @@ class CourseHandicapRequest(BaseModel):
 
 class PlayingHandicapRequest(CourseHandicapRequest):
     allowance: int
+
+
+class StartRoundRequest(PydanticBaseModel):
+    tees: str
+    date: datetime
+    course: str
+    slope: PositiveInt
+    rating: float
+
+
+class RoundsResponse(PydanticBaseModel):
+    rounds: list[KeyRoundData]
