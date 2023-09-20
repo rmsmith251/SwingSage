@@ -4,9 +4,11 @@ from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
 from sage.main import add_new_round
+from sage.models.golf import Hole, Round, Rounds
+from sage.models.requests import StartRoundRequest
+from sage.models.responses import RoundsResponse
 from sage.settings import Settings
 from sage.utils.logging import get_logger
-from sage.utils.types import Hole, Round, Rounds, RoundsResponse, StartRoundRequest
 
 router = APIRouter()
 settings = Settings()

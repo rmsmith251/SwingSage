@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from sage.utils.types import CourseHandicapRequest, PlayingHandicapRequest
+from sage.models.requests import CourseHandicapRequest, PlayingHandicapRequest
 
 router = APIRouter()
 

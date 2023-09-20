@@ -1,11 +1,7 @@
 from typing import Union
 
-from sage.utils.types import (
-    CourseHandicapRequest,
-    PlayingHandicapRequest,
-    Round,
-    Rounds,
-)
+from sage.models.golf import Round, Rounds
+from sage.models.requests import CourseHandicapRequest, PlayingHandicapRequest
 
 
 def course_handicap(
