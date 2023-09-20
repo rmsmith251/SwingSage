@@ -3,7 +3,7 @@ import json
 from pydantic import parse_obj_as
 
 from sage.main import calculate_handicap_index, course_handicap, playing_handicap
-from sage.utils.types import Rounds
+from sage.models.golf import Rounds
 
 
 def test_course_handicap():
