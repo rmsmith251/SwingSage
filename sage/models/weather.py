@@ -6,9 +6,10 @@ from enum import Enum
 import requests
 from pydantic import AliasPath, Field, TypeAdapter
 
-from sage.models.base import BaseModel
-from sage.settings import Settings
+from sage.models.base import BaseModel, Coordinates, MeasuredValue
 from sage.utils.logging import get_logger
+from sage.utils.misc import distance_between_coordinates_miles
+from sage.utils.settings import Settings
 
 settings = Settings()
 logger = get_logger(settings.log_level)
@@ -30,19 +31,6 @@ HEADERS = {
 class NWSURLEnum(str, Enum):
     points = "https://api.weather.gov/points"
     zone_stations = "https://api.weather.gov/zones/forecast/{zone_id}/stations"
-
-
-class Location(BaseModel):
-    latitude: float
-    longitude: float
-
-    def to_string(self) -> str:
-        return f"{self.latitude},{self.longitude}"
-
-
-class MeasuredValue(BaseModel):
-    value: float
-    unit: str = Field(..., validation_alias="unitCode")
 
 
 class WeatherData(BaseModel):
@@ -81,22 +69,21 @@ class Station(BaseModel):
     )
     name: str = Field(..., validation_alias=AliasPath("properties", "name"))
 
-    _location: Location | None = None
+    _location: Coordinates | None = None
 
     @property
-    def location(self) -> Location:
+    def location(self) -> Coordinates:
         if self._location is None:
-            self._location = Location(latitude=self.latitude, longitude=self.longitude)
+            self._location = Coordinates(
+                latitude=self.latitude, longitude=self.longitude
+            )
         return self._location
 
-    def distance(self, loc: Location) -> float:
+    def distance(self, loc: Coordinates) -> float:
         """
-        Returns the Euclidean distance between this station and a set of coordinates. Doesn't
-        use the elevation because we (currently) can't reliably get that for a user.
+        Returns the true distance between points in miles
         """
-        lat_dist = (self.latitude - loc.latitude) ** 2
-        lon_dist = (self.longitude - loc.longitude) ** 2
-        return (lat_dist + lon_dist) ** 0.5
+        return distance_between_coordinates_miles(self.location, loc)
 
     def latest_observation(self) -> WeatherData:
         response = requests.get(f"{self.url}/observations/latest", headers=HEADERS)
@@ -127,7 +114,7 @@ class PointMetaData(BaseModel):
 
 
 class NWS(BaseModel):
-    location: Location
+    location: Coordinates
     limit: int = 100
 
     _point: PointMetaData | None = None
@@ -194,13 +181,13 @@ class NWS(BaseModel):
 
 
 def get_best_station(
-    location: Location, stations: list[Station]
+    location: Coordinates, stations: list[Station]
 ) -> tuple[float, Station]:
     best_station: Station | None = None
     best_distance: float = 9e9
     for station in stations:
         dist = station.distance(location)
-        print(f"Station: {station.name}, distance: {dist}")
+        logger.debug(f"Station: {station.name}, distance: {dist}")
         if dist < best_distance:
             best_distance = dist
             best_station = station

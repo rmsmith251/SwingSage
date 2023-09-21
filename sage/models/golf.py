@@ -6,7 +6,7 @@ from uuid import uuid4
 
 from pydantic import Field, PositiveInt
 
-from sage.models.base import BaseModel
+from sage.models.base import BaseModel, Coordinates
 from sage.models.requests import StartRoundRequest
 from sage.models.responses import ScoreResponse
 from sage.models.weather import WeatherData
@@ -21,6 +21,7 @@ class RoundTypes(str, Enum):
 
 class Shot(BaseModel):
     distance: int
+    location: Coordinates
     weather: WeatherData | None = None
 
 
@@ -74,6 +75,7 @@ class KeyRoundData(BaseModel):
     id: str = Field(default_factory=uuid4)
     date: datetime
     course: str
+    location: Coordinates
 
 
 class Round(KeyRoundData):
