@@ -28,3 +28,10 @@ pip install -e "swingsage[dev] @ git+ssh://git@github.com/rmsmith251/SwingSage.g
 # Setup pre-commit hooks
 pre-commit install
 ```
+
+## Frontend
+I am using next.js for the frontend to make a React app. I'm pretty new to frontend stuff so my instructions here could be wrong but you'll definitely need [node.js](https://nodejs.org/en) installed. Once that's installed, you can run the dev server using
+```bash
+cd sage-frontend
+npm run dev
+```
