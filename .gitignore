@@ -158,3 +158,39 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+sage-frontend/node_modules
+sage-frontend/.pnp
+.pnp.js
+
+# testing
+sage-frontend/coverage
+
+# next.js
+sage-frontend/.next/
+sage-frontend/out/
+
+# production
+sage-frontend/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
